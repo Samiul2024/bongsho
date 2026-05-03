@@ -4,6 +4,8 @@ import React, {
   useCallback,
 } from "react";
 
+import dagre from "dagre";
+
 import ReactFlow, {
   Background,
   Controls,
@@ -19,10 +21,93 @@ import PersonNode from "./PersonNode";
 import PersonModal from "./PersonModal";
 
 
-// OUTSIDE COMPONENT
+// CUSTOM NODE TYPES
 const nodeTypes = {
   personNode: PersonNode,
 };
+
+
+// DAGRE GRAPH
+const dagreGraph = new dagre.graphlib.Graph();
+
+dagreGraph.setDefaultEdgeLabel(() => ({}));
+
+
+// NODE SIZE
+const nodeWidth = 220;
+const nodeHeight = 140;
+
+
+
+// AUTO LAYOUT FUNCTION
+const getLayoutedElements = (
+  nodes,
+  edges
+) => {
+
+  dagreGraph.setGraph({
+    rankdir: "TB", // TOP TO BOTTOM
+    nodesep: 80,
+    ranksep: 120,
+  });
+
+
+
+  nodes.forEach((node) => {
+
+    dagreGraph.setNode(node.id, {
+      width: nodeWidth,
+      height: nodeHeight,
+    });
+  });
+
+
+
+  edges.forEach((edge) => {
+
+    dagreGraph.setEdge(
+      edge.source,
+      edge.target
+    );
+  });
+
+
+
+  dagre.layout(dagreGraph);
+
+
+
+  const layoutedNodes = nodes.map(
+    (node) => {
+
+      const nodeWithPosition =
+        dagreGraph.node(node.id);
+
+      return {
+        ...node,
+
+        position: {
+          x:
+            nodeWithPosition.x -
+            nodeWidth / 2,
+
+          y:
+            nodeWithPosition.y -
+            nodeHeight / 2,
+        },
+      };
+    }
+  );
+
+
+
+  return {
+    nodes: layoutedNodes,
+    edges,
+  };
+};
+
+
 
 
 const FamilyTree = ({
@@ -38,6 +123,7 @@ const FamilyTree = ({
 
 
 
+
   const fetchPeople = useCallback(async () => {
 
     try {
@@ -50,14 +136,14 @@ const FamilyTree = ({
 
       // CREATE NODES
       const generatedNodes = people.map(
-        (person, index) => ({
+        (person) => ({
           id: person._id,
 
           type: "personNode",
 
           position: {
-            x: (index % 4) * 260,
-            y: Math.floor(index / 4) * 220,
+            x: 0,
+            y: 0,
           },
 
           data: {
@@ -96,13 +182,15 @@ const FamilyTree = ({
 
             target: person._id,
 
-            animated: true,
+            type: "smoothstep",
+
+            animated: false,
           });
         }
 
 
 
-        // MOTHER EDGE
+        // OPTIONAL MOTHER EDGE
         if (person.mother?._id) {
 
           generatedEdges.push({
@@ -112,7 +200,7 @@ const FamilyTree = ({
 
             target: person._id,
 
-            animated: true,
+            type: "smoothstep",
 
             style: {
               strokeDasharray: "5 5",
@@ -123,9 +211,18 @@ const FamilyTree = ({
 
 
 
-      setNodes(generatedNodes);
+      // AUTO LAYOUT
+      const layouted =
+        getLayoutedElements(
+          generatedNodes,
+          generatedEdges
+        );
 
-      setEdges(generatedEdges);
+
+
+      setNodes(layouted.nodes);
+
+      setEdges(layouted.edges);
 
     } catch (error) {
 
@@ -136,9 +233,11 @@ const FamilyTree = ({
 
 
 
+
   useEffect(() => {
     fetchPeople();
   }, [fetchPeople, refreshKey]);
+
 
 
 
@@ -151,6 +250,10 @@ const FamilyTree = ({
           edges={edges}
           nodeTypes={nodeTypes}
           fitView
+
+          proOptions={{
+            hideAttribution: true,
+          }}
         >
 
           <Background />
