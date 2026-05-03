@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import AddPersonForm from "../components/AddPersonForm";
 
 import FamilyTree from "../components/FamilyTree";
+import Footer from "../components/Footer";
 
 const Home = () => {
 
@@ -84,6 +85,7 @@ const Home = () => {
 
         </div>
 
+        <Footer />
       </div>
     </>
   );
