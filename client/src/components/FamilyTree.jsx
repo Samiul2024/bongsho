@@ -20,6 +20,10 @@ import PersonNode from "./PersonNode";
 
 import PersonModal from "./PersonModal";
 
+import {
+  useAuth,
+} from "../context/AuthContext";
+
 
 // CUSTOM NODE TYPES
 const nodeTypes = {
@@ -46,12 +50,10 @@ const getLayoutedElements = (
 ) => {
 
   dagreGraph.setGraph({
-    rankdir: "TB", // TOP TO BOTTOM
+    rankdir: "TB",
     nodesep: 80,
     ranksep: 120,
   });
-
-
 
   nodes.forEach((node) => {
 
@@ -61,8 +63,6 @@ const getLayoutedElements = (
     });
   });
 
-
-
   edges.forEach((edge) => {
 
     dagreGraph.setEdge(
@@ -71,11 +71,7 @@ const getLayoutedElements = (
     );
   });
 
-
-
   dagre.layout(dagreGraph);
-
-
 
   const layoutedNodes = nodes.map(
     (node) => {
@@ -99,8 +95,6 @@ const getLayoutedElements = (
     }
   );
 
-
-
   return {
     nodes: layoutedNodes,
     edges,
@@ -114,6 +108,8 @@ const FamilyTree = ({
   refreshKey,
 }) => {
 
+  const { user } = useAuth();
+
   const [nodes, setNodes] = useState([]);
 
   const [edges, setEdges] = useState([]);
@@ -121,6 +117,11 @@ const FamilyTree = ({
   const [selectedPerson, setSelectedPerson] =
     useState(null);
 
+
+
+  const canEdit =
+    user?.role === "owner" ||
+    user?.role === "admin";
 
 
 
@@ -157,6 +158,8 @@ const FamilyTree = ({
 
             photo: person.photo,
 
+            canEdit,
+
             onPersonClick: (personData) =>
               setSelectedPerson(personData),
           },
@@ -167,8 +170,6 @@ const FamilyTree = ({
 
       // CREATE EDGES
       const generatedEdges = [];
-
-
 
       people.forEach((person) => {
 
@@ -188,9 +189,7 @@ const FamilyTree = ({
           });
         }
 
-
-
-        // OPTIONAL MOTHER EDGE
+        // MOTHER EDGE
         if (person.mother?._id) {
 
           generatedEdges.push({
@@ -229,7 +228,7 @@ const FamilyTree = ({
       console.log(error);
     }
 
-  }, []);
+  }, [canEdit]);
 
 
 
@@ -243,13 +242,35 @@ const FamilyTree = ({
 
   return (
     <>
-      <div className="w-full h-[85vh] bg-slate-950 rounded-2xl overflow-hidden border border-slate-700">
+      <div
+        className="
+        w-full
+        h-[78vh]
+        md:h-[85vh]
+        bg-slate-950
+        rounded-2xl
+        overflow-hidden
+        border
+        border-slate-700
+        "
+      >
 
         <ReactFlow
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
           fitView
+
+          fitViewOptions={{
+            padding: 0.35,
+          }}
+
+          minZoom={0.2}
+          maxZoom={1.5}
+          defaultZoom={0.55}
+
+          panOnScroll
+          panOnDrag
 
           proOptions={{
             hideAttribution: true,
@@ -268,13 +289,15 @@ const FamilyTree = ({
 
 
 
-      <PersonModal
-        selectedPerson={selectedPerson}
-        closeModal={() =>
-          setSelectedPerson(null)
-        }
-        refreshTree={fetchPeople}
-      />
+      {canEdit && (
+        <PersonModal
+          selectedPerson={selectedPerson}
+          closeModal={() =>
+            setSelectedPerson(null)
+          }
+          refreshTree={fetchPeople}
+        />
+      )}
     </>
   );
 };

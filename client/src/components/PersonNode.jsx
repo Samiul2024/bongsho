@@ -11,22 +11,27 @@ const PersonNode = ({
 
   return (
     <div
-      onClick={() =>
-        data.onPersonClick(data.person)
-      }
-      className="
-      bg-slate-800
-      border
-      border-slate-600
-      rounded-2xl
-      p-4
-      min-w-[220px]
-      shadow-xl
-      cursor-pointer
-      hover:border-blue-500
-      transition
-      relative
-      "
+      onClick={() => {
+        if (data.canEdit) {
+          data.onPersonClick(data.person);
+        }
+      }}
+      className={`
+    bg-slate-800
+    border
+    border-slate-600
+    rounded-2xl
+    p-4
+    min-w-[200px]
+    md:min-w-[220px]
+    shadow-xl
+    transition
+    relative
+    ${data.canEdit
+          ? "cursor-pointer hover:border-blue-500"
+          : "cursor-default"
+        }
+  `}
     >
 
       {/* TOP HANDLE */}
@@ -42,8 +47,10 @@ const PersonNode = ({
         {/* AVATAR */}
         <div
           className="
-          w-20
-          h-20
+          w-16
+          h-16
+          md:w-20
+          md:h-20
           rounded-full
           bg-slate-600
           mb-3
@@ -56,7 +63,7 @@ const PersonNode = ({
 
 
         {/* NAME */}
-        <h2 className="font-bold text-lg text-center">
+        <h2 className="font-bold text-base md:text-lg text-center">
 
           {data.name}
 
