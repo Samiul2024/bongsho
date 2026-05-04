@@ -76,7 +76,9 @@ const Home = () => {
                 user?.role === "admin" ||
                 user?.role === "owner"
               ) && (
-                  <AddPersonForm />
+                  <AddPersonForm
+                    refreshTree={refreshTree}
+                  />
                 )}
 
             </div>
