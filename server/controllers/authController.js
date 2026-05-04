@@ -49,6 +49,9 @@ export const loginUser = async (
         }
 
 
+        console.log("BODY:", req.body);
+
+        console.log("FOUND USER:", user);
 
         const isMatch =
             await bcrypt.compare(
@@ -56,7 +59,7 @@ export const loginUser = async (
                 user.password
             );
 
-
+        console.log("PASSWORD MATCH:", isMatch);
 
         if (!isMatch) {
 
