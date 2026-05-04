@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import {
   useAuth,
 } from "../context/AuthContext";
+import Navbar from "../components/Navbar";
 
 
 const Home = () => {
@@ -54,6 +55,7 @@ const Home = () => {
       />
       <div className="min-h-screen bg-slate-950 text-white p-6">
 
+        <Navbar />
         <div className="max-w-7xl mx-auto">
 
           <h1 className="text-5xl font-bold mb-2">
