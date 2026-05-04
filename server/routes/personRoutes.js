@@ -7,14 +7,49 @@ import {
   deletePerson,
 } from "../controllers/personController.js";
 
+import {
+  protect,
+  authorizeRoles,
+} from "../middleware/authMiddleware.js";
+
 const router = express.Router();
 
-router.post("/", createPerson);
 
+
+// PUBLIC
 router.get("/", getPeople);
 
-router.put("/:id", updatePerson);
 
-router.delete("/:id", deletePerson);
+
+// ADMIN + OWNER
+router.post(
+  "/",
+  protect,
+  authorizeRoles(
+    "admin",
+    "owner"
+  ),
+  createPerson
+);
+
+router.put(
+  "/:id",
+  protect,
+  authorizeRoles(
+    "admin",
+    "owner"
+  ),
+  updatePerson
+);
+
+router.delete(
+  "/:id",
+  protect,
+  authorizeRoles(
+    "admin",
+    "owner"
+  ),
+  deletePerson
+);
 
 export default router;

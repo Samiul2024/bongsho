@@ -4,9 +4,14 @@ import AddPersonForm from "../components/AddPersonForm";
 
 import FamilyTree from "../components/FamilyTree";
 import Footer from "../components/Footer";
+import {
+  useAuth,
+} from "../context/AuthContext";
+
 
 const Home = () => {
 
+  const { user } = useAuth();
   const [refreshKey, setRefreshKey] =
     useState(0);
 
@@ -43,9 +48,9 @@ const Home = () => {
     Nowapara
     "
 
-        image="https://YOUR-VERCEL-URL.vercel.app/preview.png"
+        image="https://bongsho.vercel.app//preview.png"
 
-        url="https://YOUR-VERCEL-URL.vercel.app"
+        url="https://bongsho.vercel.app/"
       />
       <div className="min-h-screen bg-slate-950 text-white p-6">
 
@@ -65,9 +70,12 @@ const Home = () => {
 
             <div className="lg:col-span-1">
 
-              <AddPersonForm
-                refreshTree={refreshTree}
-              />
+              {(
+                user?.role === "admin" ||
+                user?.role === "owner"
+              ) && (
+                  <AddPersonForm />
+                )}
 
             </div>
 

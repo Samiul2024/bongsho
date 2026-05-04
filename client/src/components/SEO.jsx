@@ -34,7 +34,7 @@ const SEO = ({
 
             <meta
                 name="author"
-                content="Omar Faruk"
+                content="MD. Samiulla Hossen"
             />
 
 
