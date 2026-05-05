@@ -113,6 +113,7 @@ const FamilyTree = ({
   const [nodes, setNodes] = useState([]);
 
   const [edges, setEdges] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [selectedPerson, setSelectedPerson] =
     useState(null);
@@ -126,7 +127,7 @@ const FamilyTree = ({
 
 
   const fetchPeople = useCallback(async () => {
-
+    setLoading(true);
     try {
 
       const res = await API.get("/persons");
@@ -226,6 +227,8 @@ const FamilyTree = ({
     } catch (error) {
 
       console.log(error);
+    } finally {
+      setLoading(false);
     }
 
   }, [canEdit]);
@@ -238,6 +241,20 @@ const FamilyTree = ({
   }, [fetchPeople, refreshKey]);
 
 
+
+  if (loading) {
+    return (
+      <div className="w-full h-[85vh] rounded-2xl bg-slate-900 border border-slate-700 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+
+          <p className="text-slate-400">
+            Loading Family Tree...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
 
   return (
@@ -262,7 +279,8 @@ const FamilyTree = ({
           fitView
 
           fitViewOptions={{
-            padding: 0.35,
+            padding: 0.2,
+            duration: 0,
           }}
 
           minZoom={0.2}
@@ -275,13 +293,14 @@ const FamilyTree = ({
           proOptions={{
             hideAttribution: true,
           }}
+          onlyRenderVisibleElements={true}
         >
 
           <Background />
 
           <Controls />
 
-          <MiniMap />
+          {nodes.length < 80 && <MiniMap />}
 
         </ReactFlow>
 
