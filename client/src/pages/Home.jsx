@@ -27,29 +27,31 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Bongsho - Interactive Family Tree Platform"
+        title="
+  Mollick Family Tree | Mollick Para Nowapara | Bongsho
+  "
 
         description="
-    Explore genealogy, family lineage,
-    ancestry, and heritage through
-    Bongsho — an interactive Bengali
-    family tree platform.
-    "
+  Explore the Mollick Family genealogy and family tree from Mollick Para, Nowapara through Bongsho — an interactive Bengali ancestry and heritage platform.
+  "
 
         keywords="
-    bongsho,
-    family tree,
-    genealogy,
-    Bengali genealogy,
-    ancestry,
-    family lineage,
-    Bangladeshi family tree,
-    heritage platform,
-    Mollick family,
-    Nowapara
-    "
+  Mollick family,
+  Mollick para,
+  Mollick bari,
+  Mollick family tree,
+  Mollick para nowapara,
+  Nowapara family,
+  Bengali genealogy,
+  family tree Bangladesh,
+  Bongsho,
+  ancestry platform,
+  Mollick lineage,
+  Mollick family Bangladesh,
+  Mollick bongsho
+  "
 
-        image="https://bongsho.vercel.app//preview.png"
+        image="https://bongsho.vercel.app/preview.png"
 
         url="https://bongsho.vercel.app/"
       />
@@ -61,9 +63,14 @@ const Home = () => {
           <h1 className="text-5xl font-bold mb-2">
             Bongsho
           </h1>
-
-          <p className="text-slate-400 mb-8">
-            Interactive Family Tree Platform
+          <h2 className="sr-only">
+            Mollick Family Tree of Mollick Para Nowapara Bangladesh
+          </h2>
+          <p className="text-slate-300 max-w-3xl leading-relaxed mb-6">
+            Bongsho is an interactive digital family tree platform representing the
+            Mollick Family of Mollick Para, Nowapara, Bangladesh. Explore ancestry,
+            genealogy, lineage, and family relationships through a modern visual
+            experience built for preserving family heritage across generations.
           </p>
 
 
@@ -96,7 +103,20 @@ const Home = () => {
           </div>
 
         </div>
+        <div className="hidden md:block mt-16 text-slate-500 text-sm leading-7">
 
+          <h2 className="text-xl font-semibold mb-3">
+            Mollick Family Heritage
+          </h2>
+
+          <p>
+            The Mollick Family of Mollick Para, Nowapara has a long family lineage
+            connected through generations. Bongsho helps preserve the genealogy,
+            ancestry, and historical relationships of the Mollick Bari and related
+            family members in Bangladesh.
+          </p>
+
+        </div>
         <Footer />
       </div>
     </>
