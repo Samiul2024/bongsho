@@ -72,20 +72,20 @@ const PersonNode = ({
 
 
         {/* PROFESSION */}
-        <p className="text-sm text-slate-300">
+        {/* <p className="text-sm text-slate-300">
 
           {data.profession || "Unknown"}
 
-        </p>
+        </p> */}
 
 
 
         {/* VILLAGE */}
-        <p className="text-xs text-slate-400 mt-1">
+        {/* <p className="text-xs text-slate-400 mt-1">
 
           {data.village}
 
-        </p>
+        </p> */}
 
       </div>
 

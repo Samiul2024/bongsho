@@ -283,8 +283,8 @@ const FamilyTree = ({
             duration: 0,
           }}
 
-          minZoom={0.2}
-          maxZoom={1.5}
+          minZoom={0.08}
+          maxZoom={3.8}
           defaultZoom={0.55}
 
           panOnScroll
