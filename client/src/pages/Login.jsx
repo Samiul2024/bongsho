@@ -49,7 +49,7 @@ const Login = () => {
 
       const res =
         await AUTH_API.post(
-          "/login",
+          "/auth/login",
           formData
         );
 
