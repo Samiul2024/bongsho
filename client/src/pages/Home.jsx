@@ -28,11 +28,11 @@ const Home = () => {
     <>
       <SEO
         title="
-  Mollick Family Tree | Mollick Para Nowapara | Bongsho
+  Mollick Family Tree | Mollick Para Nowapara | Mollick Family
   "
 
         description="
-  Explore the Mollick Family genealogy and family tree from Mollick Para, Nowapara through Bongsho — an interactive Bengali ancestry and heritage platform.
+  Explore the Mollick Family genealogy and family tree from Mollick Para, Nowapara through Mollick Family — an interactive Bengali ancestry and heritage platform.
   "
 
         keywords="
@@ -44,16 +44,16 @@ const Home = () => {
   Nowapara family,
   Bengali genealogy,
   family tree Bangladesh,
-  Bongsho,
+  Mollick Family,
   ancestry platform,
   Mollick lineage,
   Mollick family Bangladesh,
-  Mollick bongsho
+  Mollick Mollick Family
   "
 
-        image="https://bongsho.vercel.app/preview.png"
+        image="https://Mollick Family.vercel.app/preview.png"
 
-        url="https://bongsho.vercel.app/"
+        url="https://Mollick Family.vercel.app/"
       />
       <div className="min-h-screen bg-slate-950 text-white p-6">
 
@@ -61,13 +61,13 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
 
           <h1 className="text-5xl font-bold mb-2">
-            Bongsho
+            Mollick Family
           </h1>
           <h2 className="sr-only">
             Mollick Family Tree of Mollick Para Nowapara Bangladesh
           </h2>
           <p className="text-slate-300 max-w-3xl leading-relaxed mb-6">
-            Bongsho is an interactive digital family tree platform representing the
+            Mollick Family is an interactive digital family tree platform representing the
             Mollick Family of Mollick Para, Nowapara, Bangladesh. Explore ancestry,
             genealogy, lineage, and family relationships through a modern visual
             experience built for preserving family heritage across generations.
@@ -111,7 +111,7 @@ const Home = () => {
 
           <p>
             The Mollick Family of Mollick Para, Nowapara has a long family lineage
-            connected through generations. Bongsho helps preserve the genealogy,
+            connected through generations. Mollick Family helps preserve the genealogy,
             ancestry, and historical relationships of the Mollick Bari and related
             family members in Bangladesh.
           </p>

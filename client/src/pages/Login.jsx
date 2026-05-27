@@ -127,7 +127,7 @@ const Login = () => {
           text-white
           "
         >
-          Bongsho Login
+          Mollick Family Login
         </h1>
 
 

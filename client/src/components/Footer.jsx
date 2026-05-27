@@ -74,7 +74,7 @@ const Footer = () => {
                   text-white
                   "
                 >
-                  Bongsho
+                  Mollick Family
                 </h2>
 
                 <p
@@ -100,7 +100,7 @@ const Footer = () => {
               "
             >
 
-              Bongsho is a modern genealogy
+              Mollick Family is a modern genealogy
               platform designed to preserve
               family lineage, ancestry,
               heritage, and generational
@@ -273,7 +273,7 @@ const Footer = () => {
 
             © {new Date().getFullYear()}
             {" "}
-            Bongsho.
+            Mollick Family.
             All rights reserved.
 
           </p>

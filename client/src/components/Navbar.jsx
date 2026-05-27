@@ -60,7 +60,7 @@ const Navbar = () => {
           text-white
           "
         >
-          Bongsho
+          Mollick Family
         </Link>
 
 
