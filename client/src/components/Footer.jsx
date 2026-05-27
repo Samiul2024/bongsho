@@ -74,7 +74,7 @@ const Footer = () => {
                   text-white
                   "
                 >
-                  Mollick Family
+                  Bongsho
                 </h2>
 
                 <p
@@ -100,7 +100,7 @@ const Footer = () => {
               "
             >
 
-              Mollick Family is a modern genealogy
+              Bongsho is a modern genealogy
               platform designed to preserve
               family lineage, ancestry,
               heritage, and generational
@@ -234,8 +234,7 @@ const Footer = () => {
               Bengali family heritage,
               genealogy, and generational
               storytelling with MERN Stack,
-              graph visualization, and
-              AI-assisted engineering.
+              graph visualization.
 
             </p>
 
@@ -292,7 +291,7 @@ const Footer = () => {
           >
 
             <span>
-              Crafted by
+              Developed by
             </span>
 
             <span
@@ -303,7 +302,7 @@ const Footer = () => {
             >
               MD. Samiulla Hossen
             </span>
-
+            With
             <Heart
               className="
               w-4
@@ -312,29 +311,19 @@ const Footer = () => {
               "
             />
 
-            <span>
-              using
-            </span>
-
-            <span
+            <a
+              href="https://wa.me/8801766768546"
+              target="_blank"
+              rel="noreferrer"
               className="
-              text-blue-400
-              "
-            >
-              MERN Stack
-            </span>
-
-            <span>
-              &
-            </span>
-
-            <span
-              className="
-              text-emerald-400
-              "
-            >
-              AI-assisted engineering
-            </span>
+  flex
+  items-center
+  gap-2
+  text-green-400
+  hover:text-green-300
+  transition
+  "
+            >WhatsApp</a>
 
           </div>
 

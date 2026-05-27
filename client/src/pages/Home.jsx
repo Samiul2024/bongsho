@@ -67,7 +67,7 @@ const Home = () => {
             Mollick Family Tree of Mollick Para Nowapara Bangladesh
           </h2>
           <p className="text-slate-300 max-w-3xl leading-relaxed mb-6">
-            Mollick Family is an interactive digital family tree platform representing the
+            Bongsho is an interactive digital family tree platform representing the
             Mollick Family of Mollick Para, Nowapara, Bangladesh. Explore ancestry,
             genealogy, lineage, and family relationships through a modern visual
             experience built for preserving family heritage across generations.
