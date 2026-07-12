@@ -16,6 +16,10 @@ const Home = () => {
   const [refreshKey, setRefreshKey] =
     useState(0);
 
+ useEffect(() => {
+  fetch("https://mollickfamily.onrender.com/api/health")
+    .catch(() => {});
+}, []);
 
 
   const refreshTree = () => {
