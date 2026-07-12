@@ -32,6 +32,16 @@ app.get("/", (req, res) => {
 });
 
 
+// HEalth Endpoint
+app.get("/api/health", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Mollick Family Tree API is running",
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString()
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
