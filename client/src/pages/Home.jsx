@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import SEO from "../components/SEO";
 import AddPersonForm from "../components/AddPersonForm";
 
