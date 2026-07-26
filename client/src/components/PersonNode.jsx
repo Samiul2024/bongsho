@@ -47,19 +47,41 @@ const PersonNode = ({
         {/* AVATAR */}
         <div
           className="
-          w-16
-          h-16
-          md:w-20
-          md:h-20
-          rounded-full
-          bg-slate-600
-          mb-3
-          overflow-hidden
-          border-4
-          border-slate-700
-          "
-        />
-
+    w-16
+    h-16
+    md:w-20
+    md:h-20
+    rounded-full
+    bg-slate-600
+    mb-3
+    overflow-hidden
+    border-4
+    border-slate-700
+    flex
+    items-center
+    justify-center
+  "
+        >
+          {data.photo ? (
+            <img
+              src={data.photo}
+              alt={data.name}
+              loading="lazy"
+              className="
+        w-full
+        h-full
+        object-cover
+      "
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+          ) : (
+            <span className="text-3xl">
+              👤
+            </span>
+          )}
+        </div>
 
 
         {/* NAME */}
